@@ -1,0 +1,5 @@
+name, water_requirement, water_max, fertilizer_cost, parasites
+Rice, 5, 90, 12, "Beetles"
+Barley, 10, 40, 15, "Locusts, Weevils"
+Corn, 8, 60, 20, "Locusts"
+Tomato, 12, 50, 22, "Caterpillars, Weevils"
