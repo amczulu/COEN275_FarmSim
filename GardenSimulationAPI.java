@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class GardenSimulationAPI {
@@ -14,6 +11,7 @@ public class GardenSimulationAPI {
     private PestControl pestControl = new PestControl();
     private Sensor sensor = new Sensor();
     private List<String> log = new ArrayList<>();
+    private int dayCounter = 0;
 
     public void initializeGarden(String filePath) {
         try (Scanner scanner = new Scanner(new File(filePath))) {
@@ -25,9 +23,10 @@ public class GardenSimulationAPI {
                 String[] values = line.split(",");
                 String name = values[0];
                 int waterRequirement = Integer.parseInt(values[1]);
-                int fertilizerCost = Integer.parseInt(values[2]);
-                List<String> parasites = Arrays.asList(values[3].split("\\s*,\\s*"));
-                Plant plant = new Plant(name, waterRequirement, fertilizerCost, parasites);
+                int waterMax = Integer.parseInt(values[2]);
+                int fertilizerCost = Integer.parseInt(values[3]);
+                List<String> parasites = Arrays.asList(values[4].split("\\s*,\\s*"));
+                Plant plant = new Plant(name, waterRequirement, waterMax, fertilizerCost, parasites);
                 plants.add(plant);
             }
 
@@ -39,4 +38,23 @@ public class GardenSimulationAPI {
             e.printStackTrace();
         }
     }
+
+    public Map<String, Object> getPlants() {}
+
+
+
+    public void rain(int amount) {}
+    public void fertilize(int amount) {}
+    public void parasite(String parasite) {}
+
+    public void checkAndWaterPlants() {}
+
+    public void advanceDay() {}
+
+    public void getState() {}
+
+    private void logEvent(String event) {}
+
+    public static void main(String[] args) {}
+
 }
